@@ -1,13 +1,13 @@
 {
   "name": "fastshell",
-  "title": "Fiercely quick and opinionated front-ends",
-  "author": "Hossein Karami",
-  "url": "https://HosseinKarami.github.io/fastshell",
+  "title": "Gulp SASS starter pack",
+  "author": "Brian Yuen",
+  "url": "https://github.com/brianyuen/fastshell",
   "version": "1.0.5",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "http://github.com/HosseinKarami/fastshell.git"
+    "url": "https://github.com/brianyuen/fastshell"
   },
   "devDependencies": {
     "browser-sync": "^2.11.1",
@@ -15,12 +15,16 @@
     "gulp-autoprefixer": "^3.1.0",
     "gulp-cssnano": "^2.1.0",
     "gulp-header": "^1.7.1",
+    "gulp-if": "^2.0.2",
     "gulp-jshint": "^2.0.0",
+    "gulp-prompt": "^0.2.0",
     "gulp-rename": "^1.2.2",
+    "gulp-rsync": "0.0.8",
     "gulp-sass": "^2.1.1",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.1",
     "gulp-util": "^3.0.8",
-    "jshint": "^2.8.0"
+    "jshint": "^2.8.0",
+    "minimist": "^1.2.0"
   }
 }

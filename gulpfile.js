@@ -9,6 +9,10 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     cssnano = require('gulp-cssnano'),
     sourcemaps = require('gulp-sourcemaps'),
+    argv   = require('minimist')(process.argv),
+    gulpif = require('gulp-if'),
+    prompt = require('gulp-prompt'),
+    rsync  = require('gulp-rsync'),
     package = require('./package.json');
 
 
@@ -64,6 +68,90 @@ gulp.task('browser-sync', function() {
 gulp.task('bs-reload', function () {
     browserSync.reload();
 });
+
+
+/*******************************************************************************
+ * Description:
+ *
+ *   Gulp task to push changes to remote servers (eg: staging/dev/production)
+ *
+ * Usage:
+ *
+ *   gulp deploy --target
+ *
+ * Examples:
+ *
+ *   gulp deploy --production   // push to production
+ *   gulp deploy --dev          // push to dev
+ *   gulp deploy --staging      // push to staging
+ *
+ ******************************************************************************/
+
+gulp.task('deploy', function() {
+
+  // Dirs and Files to sync
+  rsyncPaths = ['app/assets'];
+
+  // Default options for rsync
+  // More rsync options here: https://gist.github.com/brianyuen/d3c4c91b74ce4e458e70884ad4cdc486
+  rsyncConf = {
+    progress: true,
+    incremental: true,
+    relative: true,
+    emptyDirectories: true,
+    recursive: true,
+    clean: true,
+    exclude: ['.DS_Store', '.Trashes'],
+  };
+
+  // Staging
+  if (argv.staging) {
+
+    rsyncConf.hostname = ''; // hostname
+    rsyncConf.username = ''; // ssh username
+    rsyncConf.destination = ''; // path where uploaded files go
+
+  // Dev
+  } else if (argv.dev) {
+
+    rsyncConf.hostname = ''; // hostname
+    rsyncConf.username = ''; // ssh username
+    rsyncConf.destination = ''; // path where uploaded files go
+
+  // Production
+  } else if (argv.production) {
+
+    rsyncConf.hostname = ''; // hostname
+    rsyncConf.username = ''; // ssh username
+    rsyncConf.destination = ''; // path where uploaded files go
+
+
+  // Missing/Invalid Target
+  } else {
+    throwError('deploy', gutil.colors.red('Missing or invalid target'));
+  }
+
+
+  // Use gulp-rsync to sync the files
+  return gulp.src(rsyncPaths)
+  .pipe(gulpif(
+      argv.production,
+      prompt.confirm({
+        message: 'Heads Up! Are you SURE you want to push to PRODUCTION?',
+        default: false
+      })
+  ))
+  .pipe(rsync(rsyncConf));
+
+});
+
+// The following is a generic function to handle error messages
+function throwError(taskName, msg) {
+  throw new gutil.PluginError({
+      plugin: taskName,
+      message: msg
+    });
+}
 
 gulp.task('default', ['css', 'js', 'browser-sync'], function () {
     gulp.watch("src/scss/**/*.scss", ['css']);
