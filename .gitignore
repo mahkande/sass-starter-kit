@@ -21,6 +21,12 @@ node_modules
 ## Bower
 src/components
 
+## Output
+/app/assets/css/style.css
+/app/assets/js/scripts.min.js
+/app/assets/css/style.min.css
+/app/assets/css/style.min.css.map
+
 ## Sass
 .sass-cache
 

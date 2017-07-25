@@ -33,7 +33,7 @@ gulp.task('css', function () {
     .pipe(cssnano())
     .pipe(rename({ suffix: '.min' }))
     .pipe(header(banner, { package : package }))
-    .pipe(sourcemaps.write())
+    .pipe(sourcemaps.write('../css'))
     .pipe(gulp.dest('app/assets/css'))
     .pipe(browserSync.reload({stream:true}));
 });
