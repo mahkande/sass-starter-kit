@@ -12,6 +12,7 @@ var gulp = require('gulp'),
     argv   = require('minimist')(process.argv),
     gulpif = require('gulp-if'),
     prompt = require('gulp-prompt'),
+    concat = require('gulp-concat'),
     rsync  = require('gulp-rsync'),
     package = require('./package.json');
 
@@ -43,16 +44,16 @@ gulp.task('css', function () {
 });
 
 gulp.task('js',function(){
-  gulp.src('src/js/scripts.js')
+  gulp.src('src/js/*.js')
     .pipe(sourcemaps.init())
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
+    .pipe(concat('scripts.min.js'))
     .pipe(header(banner, { package : package }))
     .pipe(gulp.dest('app/assets/js'))
     .pipe(uglify())
     .on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
     .pipe(header(banner, { package : package }))
-    .pipe(rename({ suffix: '.min' }))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('app/assets/js'))
     .pipe(browserSync.reload({stream:true, once: true}));
