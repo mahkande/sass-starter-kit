@@ -1,4 +1,4 @@
-# FastShell
+# SASS Starter Kit
 [![Build Status](https://travis-ci.org/HosseinKarami/fastshell.png?branch=master)](https://travis-ci.org/HosseinKarami/fastshell)
 
 inspired by [FireShell](http://getfireshell.com)
@@ -10,6 +10,33 @@ The opinionated FastShell framework. Built for the modern developer. For teams a
 * Documentation: [DOCS.md](https://github.com/HosseinKarami/fastshell/blob/master/DOCS.md)
 * HomePage: [Fastshell](https://HosseinKarami.github.io/fastshell)
 
+## Includes the following NPM packages
+* gulp
+* gulp-util
+* gulp-sass
+* browser-sync
+* gulp-autoprefixer
+* gulp-uglify
+* gulp-jshint
+* gulp-header
+* gulp-rename
+* gulp-cssnano
+* gulp-sourcemaps
+* minimist
+* gulp-if
+* gulp-prompt
+* gulp-concat
+* gulp-rsync
+
+## Sass/SCSS setup
+
+SASS Starter Kit comes with a .scss file setup and existing @import declarations to the very common web components. FastShell hopes to help those out who aren't sure about structuring a CSS project confidently as well as getting them setup with using a CSS PreProcessor. The basic idea:
+
+* `mixins` holds all Sass/SCSS mixins, FastShell ships with a few helpers
+* `module` holds modules, more Object-Orientated components and a generic app.scss for everything else, all file names should be modular/OO.
+* `partials` holds the blueprints for the project, the header, footer, sidebar and so on.
+* `vendor` holds any files that are third party, such as the font awesome icons CSS
+* `style.scss` imports all the necessary files from the above folders, when adding new files be sure to add it inside this file.
 
 ## License
 
