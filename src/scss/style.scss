@@ -2,7 +2,7 @@
 // SCSS MIXINS
 //----------------------------------*/
 
-@import 'mixins/_position.scss';
+@import 'mixins/_mixins.scss';
 
 //----------------------------------*\
 // CONFIG MODULES
@@ -10,7 +10,6 @@
 
 // Config modules
 @import 'modules/_vars.scss';
-@import 'modules/_clearfix.scss';
 @import 'modules/_defaults.scss';
 @import 'modules/_normalize.scss';
 //----------------------------------*\
@@ -28,11 +27,10 @@
 //----------------------------------*/
 
 @import 'modules/_buttons.scss';
-@import 'modules/_inputs.scss';
+@import 'modules/_forms.scss';
 @import 'modules/_lists.scss';
 @import 'modules/_typography.scss';
 @import 'modules/_misc.scss';
-@import 'modules/_app.scss';
 
 // Enhancement modules
 @import 'modules/_breakpoints.scss';

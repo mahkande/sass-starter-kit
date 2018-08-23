@@ -1,16 +1,12 @@
-@font-face {
-  font-family: 'Font-Name';
-  src: url('../fonts/font-name.eot');
-  src: url('../fonts/font-name.eot?#iefix') format('embedded-opentype'),
-       url('../fonts/font-name.woff') format('woff'),
-       url('../fonts/font-name.ttf') format('truetype'),
-       url('../fonts/font-name.svg#font-name') format('svg');
-  font-weight: normal;
-  font-style: normal;
+body {
+  font: 300 13px/1.6 $body-font;
+  color: $body-color;
 }
 
-body {
-  font: 300 13px/1.6 'Helvetica Neue', Helvetica, Arial;
-  color: #444;
-  transition: all .4s .3s ease-in;
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: $header-font;
 }
