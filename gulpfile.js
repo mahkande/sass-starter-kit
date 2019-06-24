@@ -54,7 +54,7 @@ gulp.task('js',function(){
     .pipe(uglify())
     .on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
     .pipe(header(banner, { package : package }))
-    .pipe(sourcemaps.write())
+    .pipe(sourcemaps.write('../js'))
     .pipe(gulp.dest('dist/assets/js'))
     .pipe(browserSync.reload({stream:true, once: true}));
 });
